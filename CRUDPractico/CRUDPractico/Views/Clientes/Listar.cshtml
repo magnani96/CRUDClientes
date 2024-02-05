@@ -1,0 +1,45 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model List<CRUDPractico.Models.Entities.Cliente>
+
+<h1>Clientes</h1>
+
+<a class="btn btn-success" asp-controller="Clientes" asp-action="Agregar">Agregar</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>CUIL</th>
+            <th>Razón social</th>
+            <th>Teléfono</th>
+            <th>Dirección</th>
+            <th>Activo</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var cliente in Model)
+        {
+            <tr>
+                <td>@cliente.Cuil</td>
+                <td>@cliente.RazonSocial</td>
+                <td>@cliente.Telefono</td>
+                <td>@cliente.Direccion</td>
+                @if (cliente.Activo)
+                {
+                    <td>Si</td>
+                }
+                else
+                {
+                    <td>No</td>
+                }
+                <td>
+                    <a class="btn btn-primary" asp-controller="Clientes" asp-action="Editar" asp-route-Cuil="@cliente.Cuil">Editar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
